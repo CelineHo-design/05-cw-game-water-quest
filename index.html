@@ -7,17 +7,94 @@
   <link href="style.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-  <div class="container">
-    <h1>Water Quest</h1>
-    <p class="game-instructions">Collect 20 items to complete the game!</p>
-    <div class="stats">
-      <p>Cans Collected: <span id="current-cans">0</span></p>
-      <p>Time Left: <span id="timer">30</span>s</p>
+  <div class="app">
+    <header class="title">
+      <h1>Water Hero</h1>
+      <p class="subtitle">Guide clean water to the village</p>
+    </header>
+
+    <main>
+      <section id="start-screen" class="screen active">
+        <div class="hero">
+          <div class="drop-graphic">💧</div>
+          <h1 class="hero-title">Water Hero</h1>
+          <p class="hero-sub">Guide clean water to the village</p>
+        </div>
+
+        <div class="intro-card">
+          <p>The village is thirsty. You must carry clean water across the land — but the path is blocked by <strong>rocks</strong> and <strong>muddy patches</strong>. Reach the <strong>village</strong> before you run out of moves!</p>
+          <div class="cta-row">
+            <button id="play-btn" class="primary large">▶ Play Game</button>
+          </div>
+        </div>
+
+        <div class="level-select">
+          <div class="jump-label">— or jump to a level —</div>
+          <div id="level-buttons" class="level-buttons"></div>
+        </div>
+
+        <div class="home-footer">Arrow keys / WASD to move · On-screen buttons on mobile</div>
+        <div class="home-actions"><button id="reset-game" class="level-btn">Reset</button></div>
+      </section>
+
+      <section id="play-screen" class="screen">
+        <div class="play-header">
+          <div class="level-info">
+            <div id="level-title">Village Path</div>
+            <div class="scores">
+              <div>Level Score: <span id="level-score">0</span></div>
+              <div>Total Score: <span id="total-score">0</span></div>
+            </div>
+          </div>
+          <div class="moves-remaining">Moves remaining: <span id="moves-remaining">0</span></div>
+        </div>
+
+        <div id="grid-container" class="grid-container"></div>
+
+        <div class="controls">
+          <div class="dpad">
+            <button class="dir" data-dir="up">▲</button>
+            <div class="row">
+              <button class="dir" data-dir="left">◀</button>
+              <button id="drop-water" class="drop">💧</button>
+              <button class="dir" data-dir="right">▶</button>
+            </div>
+            <button class="dir" data-dir="down">▼</button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div id="modal-lose" class="modal" aria-hidden="true">
+      <div class="modal-card">
+        <h2>Out of moves</h2>
+        <p>So close! The village couldn't get its water this time.</p>
+        <div class="modal-actions">
+          <button id="home-from-lose">Home</button>
+          <button id="retry-btn" class="primary">Try Again</button>
+        </div>
+      </div>
     </div>
-    <div id="achievements" class="achievement"></div>
-    <div class="game-grid"></div>
-    <button id="start-game">Start Game</button>
+
+    <div id="modal-win" class="modal" aria-hidden="true">
+      <div class="modal-card">
+        <h2>Level Complete!</h2>
+        <p id="win-text">The village has clean water!</p>
+        <div class="score-breakdown">
+          <div>Base Score: <span id="base-score">0</span></div>
+          <div>Moves Bonus: <span id="moves-bonus">0</span></div>
+          <div>Total: <span id="win-total">0</span></div>
+        </div>
+        <div class="modal-actions">
+          <button id="home-from-win">Home</button>
+          <button id="next-level" class="primary">Next Level</button>
+        </div>
+      </div>
+    </div>
+
+    <footer class="credits">Use arrow keys or WASD — on-screen buttons for mobile</footer>
+
+    <script src="script.js"></script>
   </div>
-  <script src="script.js"></script>
 </body>
 </html>
